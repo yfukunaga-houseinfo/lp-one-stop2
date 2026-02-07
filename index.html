@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ITが苦手な40〜60代経営者向け。小さく試して当たったら伸ばす集客支援で無料相談の申込みを増やす営業型LP。" />
+  <meta name="keywords" content="集客支援, 広告運用, LP改善, 経営者, 無料相談, 40代, 50代, 60代" />
+  <meta name="author" content="OneStop" />
+  <title>広告に、もう失敗したくない経営者へ｜小さく試して当たったら伸ばす集客支援</title>
+  <style>
+    /*
+      LP全体設計
+      - 不安除去最優先
+      - 信頼＞デザイン
+      - ブルー×グレーで落ち着いた安心感
+      - スマホ最優先
+    */
+    :root {
+      --blue-900: #0b1f3a;
+      --blue-700: #1e3a8a;
+      --blue-500: #2563eb;
+      --gray-900: #1f2937;
+      --gray-700: #4b5563;
+      --gray-500: #9ca3af;
+      --gray-200: #e5e7eb;
+      --white: #ffffff;
+      --accent: #c6a862;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+      color: var(--blue-900);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .section-lead {
+      color: var(--gray-700);
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(198, 168, 98, 0.15);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    /* CTAボタン */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: 0.3s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--blue-900);
+      box-shadow: 0 12px 24px rgba(198, 168, 98, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #b59651;
+    }
+
+    .btn-ghost {
+      border-color: var(--gray-200);
+      color: var(--blue-700);
+      background: var(--white);
+    }
+
+    /* ファーストビュー */
+    .hero {
+      background: linear-gradient(120deg, rgba(11, 31, 58, 0.95), rgba(30, 58, 138, 0.9)),
+        url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      color: var(--white);
+      padding: 96px 0 80px;
+    }
+
+    .hero-content {
+      display: grid;
+      gap: 32px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3.8vw, 3.4rem);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-sub {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .hero-sub span {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 24px;
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-card li {
+      margin-bottom: 10px;
+    }
+
+    /* 共感ブロック */
+    .empathy-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .empathy-item {
+      padding: 20px;
+      background: #f9fafb;
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+    }
+
+    /* 教育・解決策 */
+    .grid-3 {
+      display: grid;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .card h3 {
+      color: var(--blue-700);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    /* 信頼形成 */
+    .trust-block {
+      display: grid;
+      gap: 20px;
+    }
+
+    .trust-item {
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      background: #f8fafc;
+      border-radius: 12px;
+    }
+
+    /* 小さく始める戦略 */
+    .step-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step-item {
+      display: grid;
+      gap: 12px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #f9fafb;
+      border: 1px solid var(--gray-200);
+    }
+
+    .step-number {
+      font-weight: 700;
+      color: var(--blue-700);
+      font-size: 1.1rem;
+    }
+
+    /* サービス内容 */
+    .service-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .service-item {
+      padding: 20px;
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .service-item strong {
+      color: var(--blue-700);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* 料金 */
+    .pricing {
+      display: grid;
+      gap: 24px;
+    }
+
+    .pricing-card {
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 28px;
+      background: #f9fafb;
+    }
+
+    .pricing-card .price {
+      font-size: 2rem;
+      color: var(--blue-900);
+      margin: 12px 0 16px;
+    }
+
+    .pricing-card ul {
+      color: var(--gray-700);
+      margin-bottom: 20px;
+    }
+
+    .pricing-card li {
+      margin-bottom: 10px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .pricing-card li::before {
+      content: "•";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    /* FAQ */
+    .faq {
+      display: grid;
+      gap: 16px;
+    }
+
+    details {
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 18px 20px;
+      background: var(--white);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--blue-700);
+    }
+
+    /* クロージング */
+    .closing {
+      text-align: center;
+      background: #f3f4f6;
+    }
+
+    .closing h2 {
+      color: var(--blue-900);
+      font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+    }
+
+    /* CTAセクション */
+    .cta-section {
+      background: linear-gradient(120deg, var(--blue-900), var(--blue-700));
+      color: var(--white);
+      text-align: center;
+      padding: 72px 0;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.85);
+      margin: 16px 0 28px;
+    }
+
+    /* 固定CTA */
+    .fixed-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 31, 58, 0.95);
+      padding: 12px 16px;
+      z-index: 999;
+      box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .fixed-cta .cta-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--white);
+    }
+
+    .fixed-cta span {
+      font-size: 0.95rem;
+    }
+
+    .fixed-cta .btn {
+      padding: 10px 20px;
+      font-size: 0.95rem;
+    }
+
+    /* フッター */
+    footer {
+      background: #0f172a;
+      color: var(--gray-500);
+      padding: 40px 0 80px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--gray-200);
+    }
+
+    /* レスポンシブ */
+    @media (min-width: 768px) {
+      .hero-content {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+      }
+
+      .grid-3,
+      .trust-block,
+      .pricing {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .pricing {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .service-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .step-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .section {
+        padding: 56px 0;
+      }
+
+      .hero {
+        padding: 72px 0 64px;
+      }
+
+      .fixed-cta .cta-inner {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .fixed-cta .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ① ファーストビュー -->
+  <header class="hero" id="top">
+    <div class="container hero-content">
+      <div>
+        <span class="badge">営業型LP｜無料相談受付中</span>
+        <h1>広告に、もう失敗したくない経営者へ。<br>“小さく試して、当たったら伸ばす”集客支援。</h1>
+        <p>最小広告費／丸投げOK／数字で可視化</p>
+        <div class="hero-sub">
+          <span>最小10万円からテスト</span>
+          <span>ITが苦手でも伴走</span>
+          <span>3日ごとに進捗共有</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h2>まずは「失敗しない小さな一歩」から</h2>
+        <ul>
+          <li>✅ 広告費を抑えつつ、反応が出る型を検証</li>
+          <li>✅ 経営者の意思決定を迷わせない導線設計</li>
+          <li>✅ 次の一手が見えるレポートで透明性を確保</li>
+        </ul>
+        <p style="margin-top: 16px; color: rgba(255,255,255,0.8);">
+          無料相談で現状ヒアリングと改善提案をお渡しします。
+        </p>
+        <a class="btn btn-primary" href="#contact">無料相談を申し込む</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ② 共感ブロック -->
+  <section class="section" id="empathy">
+    <div class="container">
+      <span class="badge">共感</span>
+      <h2 class="section-title">こんな不安はありませんか？</h2>
+      <p class="section-lead">広告の失敗経験や業者への不信、ITへの不安を解消するところから始めます。</p>
+      <div class="empathy-list">
+        <div class="empathy-item">広告に投資したのに問い合わせが増えなかった</div>
+        <div class="empathy-item">業者に任せたが、成果や理由が説明されなかった</div>
+        <div class="empathy-item">ITが苦手で、何を判断すれば良いのかわからない</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 失敗原因教育 -->
+  <section class="section" id="education" style="background:#f3f4f6;">
+    <div class="container">
+      <span class="badge">失敗原因</span>
+      <h2 class="section-title">広告×LP×導線が切れていると失敗します</h2>
+      <p class="section-lead">広告だけ、LPだけ、担当者だけでは成果が出ません。全体が一つの設計でつながることが重要です。</p>
+      <div class="grid-3">
+        <article class="card">
+          <h3>広告だけで集客を任せてしまう</h3>
+          <p>入口は作れても、着地先が弱いと問い合わせは止まります。</p>
+        </article>
+        <article class="card">
+          <h3>LPが「説明だけ」で終わる</h3>
+          <p>経営者が納得する根拠と導線がなければ決断されません。</p>
+        </article>
+        <article class="card">
+          <h3>導線が分断されて数字が追えない</h3>
+          <p>改善ができず、成果の再現性がなくなります。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 解決策 -->
+  <section class="section" id="solution">
+    <div class="container">
+      <span class="badge">解決策</span>
+      <h2 class="section-title">広告・LP・導線をワンストップで整える</h2>
+      <p class="section-lead">経営者の意思決定に必要な「安心感」「根拠」「次の一手」を一貫して提供します。</p>
+      <div class="grid-3">
+        <article class="card">
+          <h3>広告運用</h3>
+          <p>最小投資で検証し、反応が出た領域に集中。</p>
+        </article>
+        <article class="card">
+          <h3>LP設計</h3>
+          <p>信頼形成に必要な要素を整理し、経営者向けに最適化。</p>
+        </article>
+        <article class="card">
+          <h3>導線改善</h3>
+          <p>問い合わせまでの流れを可視化して迷いをなくします。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ 信頼形成（実績なし対応） -->
+  <section class="section" id="trust" style="background:#f9fafb;">
+    <div class="container">
+      <span class="badge">信頼形成</span>
+      <h2 class="section-title">実績がなくても、信頼される設計</h2>
+      <p class="section-lead">結果よりも「考え方」「プロセス」「責任範囲」を明確にし、不安を取り除きます。</p>
+      <div class="trust-block">
+        <div class="trust-item">
+          <h3>考え方：小さく検証し、勝ち筋に集中</h3>
+          <p>初期投資を抑えながら、確度の高い施策に絞って伸ばします。</p>
+        </div>
+        <div class="trust-item">
+          <h3>プロセス：数値共有と判断の伴走</h3>
+          <p>経営者が判断しやすいように、重要指標を定期共有します。</p>
+        </div>
+        <div class="trust-item">
+          <h3>責任範囲：成果に向けた改善まで</h3>
+          <p>広告・LP・導線まで一貫して改善責任を持ちます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ 小さく始める戦略 -->
+  <section class="section" id="strategy">
+    <div class="container">
+      <span class="badge">小さく始める</span>
+      <h2 class="section-title">低リスクで始められる安心設計</h2>
+      <p class="section-lead">試してみて「成果の見込み」が立ってから、段階的に伸ばします。</p>
+      <div class="step-list">
+        <div class="step-item">
+          <span class="step-number">STEP 1</span>
+          <strong>最小10万円でテスト配信</strong>
+          <p>反応が出るかを確認し、無理な投資は避けます。</p>
+        </div>
+        <div class="step-item">
+          <span class="step-number">STEP 2</span>
+          <strong>当たり施策を特定</strong>
+          <p>勝ちパターンが見えたら、集中して伸ばします。</p>
+        </div>
+        <div class="step-item">
+          <span class="step-number">STEP 3</span>
+          <strong>継続判断を支援</strong>
+          <p>経営判断に必要な数字を整理し、次の一手を明確化。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ サービス内容 -->
+  <section class="section" id="service" style="background:#f3f4f6;">
+    <div class="container">
+      <span class="badge">サービス内容</span>
+      <h2 class="section-title">最短で検証できる運用体制</h2>
+      <p class="section-lead">スピードと見える化を重視し、意思決定を後押しします。</p>
+      <div class="service-list">
+        <div class="service-item">
+          <strong>1週LP</strong>
+          <p>1週間でLPを立ち上げ、検証を早期スタート。</p>
+        </div>
+        <div class="service-item">
+          <strong>4週広告</strong>
+          <p>4週間で広告配信を最適化し、反応率を改善。</p>
+        </div>
+        <div class="service-item">
+          <strong>3日レポート</strong>
+          <p>3日ごとに状況を共有し、数値をわかりやすく可視化。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑧ 料金表 -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <span class="badge">料金</span>
+      <h2 class="section-title">まずは試せる料金設計</h2>
+      <p class="section-lead">初期の不安を減らすため、低リスクプランを用意しています。</p>
+      <div class="pricing">
+        <div class="pricing-card">
+          <h3>お試しプラン</h3>
+          <p class="price">¥100,000</p>
+          <ul>
+            <li>LP設計・改善</li>
+            <li>広告初期設計</li>
+            <li>初期分析レポート</li>
+          </ul>
+          <a class="btn btn-primary" href="#contact">このプランで相談</a>
+        </div>
+        <div class="pricing-card">
+          <h3>継続プラン</h3>
+          <p class="price">¥35,000 / 月</p>
+          <ul>
+            <li>広告運用の最適化</li>
+            <li>LP改善・導線最適化</li>
+            <li>3日ごとの数値報告</li>
+          </ul>
+          <a class="btn btn-primary" href="#contact">このプランで相談</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑨ FAQ -->
+  <section class="section" id="faq" style="background:#f9fafb;">
+    <div class="container">
+      <span class="badge">FAQ</span>
+      <h2 class="section-title">よくあるご質問</h2>
+      <div class="faq">
+        <details>
+          <summary>広告予算が少なくても大丈夫ですか？</summary>
+          <p>最小10万円から検証できます。無理な投資は提案しません。</p>
+        </details>
+        <details>
+          <summary>ITが苦手でも理解できますか？</summary>
+          <p>専門用語は使わず、経営判断に必要な数字だけを共有します。</p>
+        </details>
+        <details>
+          <summary>契約前に相談はできますか？</summary>
+          <p>無料相談で現状の課題整理と改善案をお伝えしています。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑩ クロージング -->
+  <section class="section closing" id="closing">
+    <div class="container">
+      <span class="badge">クロージング</span>
+      <h2>集客は才能ではなく設計</h2>
+      <p class="section-lead">成果を出すための設計を、経営者の判断軸に合わせて構築します。</p>
+    </div>
+  </section>
+
+  <!-- ⑪ CTA -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2 class="section-title" style="color: var(--white);">無料相談で「失敗しない第一歩」を</h2>
+      <p>現状の課題をヒアリングし、改善提案を無料でお渡しします。</p>
+      <a class="btn btn-primary" href="mailto:info@example.com">無料相談を申し込む</a>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <div class="container">
+      <p>© 2024 OneStop LP Studio. All Rights Reserved.</p>
+      <p><a href="#">プライバシーポリシー</a> | <a href="#">特定商取引法に基づく表記</a></p>
+    </div>
+  </footer>
+
+  <!-- 固定CTA（無料相談） -->
+  <div class="fixed-cta" role="region" aria-label="無料相談の固定CTA">
+    <div class="container cta-inner">
+      <span>無料相談受付中｜まずは小さく試して不安を解消</span>
+      <a class="btn btn-primary" href="#contact">無料相談を申し込む</a>
+    </div>
+  </div>
+</body>
+</html>
