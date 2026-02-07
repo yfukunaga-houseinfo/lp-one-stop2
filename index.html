@@ -3,27 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="40〜60代の経営者向けに、信頼感と成果を重視した問い合わせ獲得用LP。" />
-  <meta name="keywords" content="問い合わせ獲得, LP, 経営者, コンサルティング, 40代, 50代, 60代" />
-  <meta name="author" content="OneStop" />
-  <title>経営者のための問い合わせ獲得LP | 信頼と成果を両立</title>
+  <meta name="description" content="ITが苦手な中高年経営者向けに、LP集客をワンストップで支援するサービスの紹介ページ。" />
+  <title>ITが苦手な中高年経営者向け｜LP集客ワンストップ支援サービス</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    /*
-      基本設計
-      - 落ち着いた高級感: ブルー×グレー
-      - 余白重視
-      - スマホ最適化
-    */
     :root {
-      --blue-900: #0b1f3a;
-      --blue-700: #153e75;
-      --blue-500: #2a65b7;
-      --gray-900: #1f2937;
-      --gray-700: #4b5563;
-      --gray-500: #9ca3af;
-      --gray-200: #e5e7eb;
+      --forest-900: #1f3a2e;
+      --forest-700: #2c4d3d;
+      --gold-500: #d6a24c;
+      --sand-100: #f6f4ef;
+      --ink-900: #1b1b1b;
+      --ink-600: #555555;
       --white: #ffffff;
-      --accent: #c6a862; /* 上品なゴールド */
+      --shadow-soft: 0 18px 45px rgba(31, 58, 46, 0.12);
+      --shadow-press: 0 10px 25px rgba(31, 58, 46, 0.15);
+      --radius-card: 18px;
+      --radius-pill: 999px;
+      --transition: 180ms ease;
     }
 
     * {
@@ -32,85 +30,161 @@
       padding: 0;
     }
 
-    body {
-      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-      color: var(--gray-900);
-      background: var(--white);
-      line-height: 1.8;
-      letter-spacing: 0.02em;
+    html {
+      scroll-behavior: smooth;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--ink-900);
+      background: var(--sand-100);
+      line-height: 1.8;
+      letter-spacing: 0.02em;
     }
 
     img {
       max-width: 100%;
       display: block;
+      border-radius: 16px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+      background-size: 3px 3px;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(246, 244, 239, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(31, 58, 46, 0.1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+    }
+
+    .logo {
+      font-weight: 500;
+      color: var(--forest-900);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--ink-600);
     }
 
     .container {
-      width: min(1100px, 90%);
+      width: min(1100px, 92%);
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .section {
       padding: 72px 0;
     }
 
-    .section-title {
-      font-size: clamp(1.6rem, 2vw, 2.2rem);
-      color: var(--blue-900);
-      margin-bottom: 24px;
-      letter-spacing: 0.04em;
-    }
-
-    .section-subtitle {
-      color: var(--gray-700);
-      margin-bottom: 40px;
+    .section-header {
+      margin-bottom: 32px;
     }
 
     .badge {
-      display: inline-block;
-      background: rgba(198, 168, 98, 0.15);
-      color: var(--accent);
-      padding: 6px 14px;
-      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(214, 162, 76, 0.15);
+      color: var(--forest-900);
       font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--forest-900);
+      margin-top: 16px;
       letter-spacing: 0.06em;
-      margin-bottom: 16px;
     }
 
-    /* FV */
+    .section-lead {
+      color: var(--ink-600);
+      margin-top: 12px;
+      max-width: 640px;
+    }
+
     .hero {
-      background: linear-gradient(120deg, rgba(11, 31, 58, 0.95), rgba(21, 62, 117, 0.85)),
-        url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
-      color: var(--white);
       padding: 96px 0 80px;
+      background: linear-gradient(135deg, rgba(31, 58, 46, 0.92), rgba(31, 58, 46, 0.65));
+      color: var(--white);
     }
 
-    .hero-content {
+    .hero-grid {
       display: grid;
       gap: 32px;
-      align-items: center;
     }
 
-    .hero h1 {
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      line-height: 1.4;
-      margin-bottom: 16px;
+    .hero-copy h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.35;
+      letter-spacing: 0.08em;
+      animation: fadeSlide 0.8s ease;
     }
 
-    .hero p {
+    .hero-copy p {
+      margin-top: 18px;
       color: rgba(255, 255, 255, 0.85);
-      font-size: 1.05rem;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-card li {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .cta-group {
       display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+      flex-direction: column;
+      gap: 12px;
       margin-top: 24px;
     }
 
@@ -118,382 +192,677 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 28px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: 0.3s ease;
+      padding: 14px 24px;
+      border-radius: var(--radius-pill);
+      font-weight: 500;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
       border: 1px solid transparent;
+      cursor: pointer;
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: var(--blue-900);
+      background: var(--gold-500);
+      color: var(--forest-900);
+      box-shadow: var(--shadow-soft);
     }
 
     .btn-primary:hover {
-      background: #b59651;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-press);
     }
 
-    .btn-outline {
-      border-color: rgba(255, 255, 255, 0.5);
+    .btn-secondary {
+      background: transparent;
       color: var(--white);
+      border-color: rgba(255, 255, 255, 0.6);
     }
 
-    .btn-outline:hover {
-      border-color: var(--white);
-      background: rgba(255, 255, 255, 0.1);
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-press);
     }
 
-    .hero-card {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 24px;
-      border-radius: 20px;
-      backdrop-filter: blur(6px);
-    }
-
-    /* 課題提示 */
-    .pain-points {
-      display: grid;
-      gap: 24px;
-    }
-
-    .pain-card {
-      border: 1px solid var(--gray-200);
-      border-radius: 16px;
-      padding: 24px;
-      background: #f9fafb;
-    }
-
-    .pain-card h3 {
-      color: var(--blue-700);
-      margin-bottom: 12px;
-      font-size: 1.1rem;
-    }
-
-    /* 解決策 */
-    .solution-grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .solution-item {
-      padding: 24px;
-      border-left: 3px solid var(--accent);
-      background: #f8fafc;
-      border-radius: 8px;
-    }
-
-    /* 実績 */
-    .trust-grid {
+    .bento-grid {
       display: grid;
       gap: 20px;
     }
 
-    .trust-card {
+    .card {
       background: var(--white);
-      border-radius: 16px;
+      border-radius: var(--radius-card);
       padding: 24px;
-      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(31, 58, 46, 0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
     }
 
-    .trust-card strong {
-      color: var(--blue-700);
-      font-size: 1.2rem;
-      display: block;
-      margin-bottom: 8px;
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-press);
     }
 
-    /* 料金 */
-    .pricing {
+    .card h3 {
+      color: var(--forest-900);
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(31, 58, 46, 0.08);
+      color: var(--forest-700);
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+    }
+
+    .image-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .list {
+      margin-top: 12px;
       display: grid;
-      gap: 24px;
+      gap: 10px;
+      color: var(--ink-600);
     }
 
-    .pricing-card {
-      border: 1px solid var(--gray-200);
-      border-radius: 20px;
-      padding: 28px;
-      background: #f9fafb;
-    }
-
-    .pricing-card .price {
-      font-size: 2rem;
-      color: var(--blue-900);
-      margin: 12px 0 16px;
-    }
-
-    .pricing-card ul {
+    .list li {
       list-style: none;
-      color: var(--gray-700);
-      margin-bottom: 20px;
-    }
-
-    .pricing-card li {
-      margin-bottom: 10px;
-      padding-left: 18px;
+      padding-left: 20px;
       position: relative;
     }
 
-    .pricing-card li::before {
-      content: "•";
-      color: var(--accent);
+    .list li::before {
+      content: "●";
+      color: var(--gold-500);
       position: absolute;
       left: 0;
     }
 
-    /* FAQ */
-    .faq {
+    .highlight {
+      color: var(--forest-900);
+      font-weight: 500;
+    }
+
+    .flow {
       display: grid;
       gap: 16px;
     }
 
-    details {
-      border: 1px solid var(--gray-200);
-      border-radius: 12px;
-      padding: 18px 20px;
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
       background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(214, 162, 76, 0.2);
+      color: var(--forest-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+    }
+
+    .price-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .price-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(31, 58, 46, 0.08);
+    }
+
+    .price {
+      font-size: 2rem;
+      color: var(--forest-900);
+      margin: 8px 0;
+    }
+
+    details {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
     }
 
     summary {
       cursor: pointer;
-      font-weight: 600;
-      color: var(--blue-700);
+      font-weight: 500;
+      color: var(--forest-900);
     }
 
-    /* CTA */
-    .cta-section {
-      background: linear-gradient(120deg, var(--blue-900), var(--blue-700));
+    .closing {
+      background: var(--forest-700);
       color: var(--white);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .cta-section {
       text-align: center;
-      padding: 72px 0;
+      padding: 72px 0 120px;
     }
 
-    .cta-section p {
-      color: rgba(255, 255, 255, 0.8);
-      margin: 16px 0 28px;
+    .cta-panel {
+      background: var(--forest-900);
+      color: var(--white);
+      padding: 36px;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
     }
 
-    /* フッター */
     footer {
-      background: #0f172a;
-      color: var(--gray-500);
-      padding: 32px 0;
-      font-size: 0.9rem;
+      padding: 32px 0 120px;
+      color: var(--ink-600);
+      font-size: 0.85rem;
     }
 
-    footer a {
-      color: var(--gray-200);
+    .fixed-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--forest-900);
+      padding: 14px 20px;
+      z-index: 20;
+      box-shadow: 0 -12px 30px rgba(31, 58, 46, 0.2);
     }
 
-    /* レスポンシブ */
+    .fixed-cta .btn {
+      width: 100%;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (min-width: 768px) {
-      .hero-content {
-        grid-template-columns: repeat(2, 1fr);
+      .nav {
+        padding: 18px 40px;
       }
 
-      .pain-points,
-      .solution-grid,
-      .trust-grid,
-      .pricing {
+      .nav-links {
+        display: flex;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+      }
+
+      .cta-group {
+        flex-direction: row;
+      }
+
+      .bento-grid {
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .pricing {
+      .bento-grid.two-col {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .price-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .fixed-cta {
+        display: none;
       }
     }
 
     @media (max-width: 767px) {
       .section {
-        padding: 56px 0;
+        padding: 64px 0;
       }
 
-      .hero {
-        padding: 72px 0 64px;
-      }
-
-      .cta-group {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
+      .cta-section {
+        padding: 64px 0 120px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- FV：キャッチ＋CTA -->
-  <header class="hero">
-    <div class="container hero-content">
-      <div>
-        <span class="badge">経営者向け 問い合わせ獲得LP</span>
-        <h1>信頼感のあるブランド設計で、<br>質の高いお問い合わせを継続的に。</h1>
-        <p>
-          40〜60代の経営者様が求める「安心感」と「実績」を、
-          1枚のLPで伝える設計。短期的な反応だけでなく、
-          中長期で信頼が積み上がる導線を構築します。
-        </p>
-        <div class="cta-group">
-          <a class="btn btn-primary" href="#contact">無料相談を予約する</a>
-          <a class="btn btn-outline" href="#pricing">料金を確認する</a>
+  <div class="page">
+    <header>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <div class="logo">One Stop LP</div>
+        <div class="nav-links">
+          <a href="#problem">お悩み</a>
+          <a href="#onestop">仕組み</a>
+          <a href="#price">料金</a>
+          <a href="#cta">無料相談</a>
         </div>
-      </div>
-      <div class="hero-card">
-        <h2>こんなお悩みはありませんか？</h2>
-        <ul>
-          <li>✅ 広告費をかけても問い合わせが増えない</li>
-          <li>✅ 競合との差別化ポイントが伝わっていない</li>
-          <li>✅ 価格競争から抜け出したい</li>
-        </ul>
-        <p style="margin-top: 16px; color: rgba(255,255,255,0.8);">
-          1社1社の強みを整理し、経営者目線の信頼設計で改善します。
-        </p>
-      </div>
-    </div>
-  </header>
+      </nav>
+    </header>
 
-  <!-- 課題提示 -->
-  <section class="section" id="problem">
-    <div class="container">
-      <span class="badge">課題提示</span>
-      <h2 class="section-title">問い合わせが増えない3つの理由</h2>
-      <p class="section-subtitle">見込み客が「信頼できる」と感じる要素が不足していることが最大の原因です。</p>
-      <div class="pain-points">
-        <article class="pain-card">
-          <h3>価格訴求に偏り、価値が伝わらない</h3>
-          <p>経営層は価格よりも「成果」や「リスク低減」を重視します。</p>
-        </article>
-        <article class="pain-card">
-          <h3>実績や根拠の提示が不足している</h3>
-          <p>導入後の効果や事例がないと、意思決定が進みません。</p>
-        </article>
-        <article class="pain-card">
-          <h3>導線が複雑で離脱してしまう</h3>
-          <p>情報の整理が不十分なLPは、読み手の集中力を削ぎます。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 解決策 -->
-  <section class="section" id="solution" style="background:#f3f4f6;">
-    <div class="container">
-      <span class="badge">解決策</span>
-      <h2 class="section-title">経営者が納得する構成で信頼を可視化</h2>
-      <p class="section-subtitle">説得力のあるストーリーと、成果を裏付ける情報設計を行います。</p>
-      <div class="solution-grid">
-        <div class="solution-item">
-          <h3>強みの言語化</h3>
-          <p>競合との差別化ポイントを整理し、経営者の視点で価値を再定義。</p>
+    <!-- Hero / First View -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="badge">ITが苦手な経営者さまへ</span>
+          <h1>
+            LP集客を<br />
+            ひとつの窓口で、
+            安心して任せる。
+          </h1>
+          <p>
+            広告やITが不安でも大丈夫です。私たちは中高年経営者さまの気持ちに寄り添い、
+            「迷わない」「損をしない」「わかりやすい」LP集客を支援します。
+          </p>
+          <div class="cta-group">
+            <a class="btn btn-primary" href="#cta">無料相談を予約する</a>
+            <a class="btn btn-secondary" href="#price">料金を確認する</a>
+          </div>
         </div>
-        <div class="solution-item">
-          <h3>成果事例の強化</h3>
-          <p>数字とプロセスを具体化し、再現性の高い成果を見せます。</p>
-        </div>
-        <div class="solution-item">
-          <h3>CV導線の最適化</h3>
-          <p>「読了 → 納得 → 問い合わせ」が自然に進む流れを構築。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 実績／信頼 -->
-  <section class="section" id="trust">
-    <div class="container">
-      <span class="badge">実績・信頼</span>
-      <h2 class="section-title">信頼を可視化する実績</h2>
-      <p class="section-subtitle">多業種で成果を出した経験が、次の成功を支えます。</p>
-      <div class="trust-grid">
-        <div class="trust-card">
-          <strong>導入企業数 120社以上</strong>
-          <p>中堅・中小企業を中心に幅広く支援。</p>
-        </div>
-        <div class="trust-card">
-          <strong>平均CV率 2.4倍</strong>
-          <p>既存LPの改善で最短1ヶ月で成果を実感。</p>
-        </div>
-        <div class="trust-card">
-          <strong>満足度 96%</strong>
-          <p>経営層の意思決定を支える提案と伴走。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 料金 -->
-  <section class="section" id="pricing" style="background:#f9fafb;">
-    <div class="container">
-      <span class="badge">料金</span>
-      <h2 class="section-title">明確な料金体系</h2>
-      <p class="section-subtitle">初期設計から運用改善まで一気通貫で対応します。</p>
-      <div class="pricing">
-        <div class="pricing-card">
-          <h3>スタンダードプラン</h3>
-          <p class="price">¥300,000〜</p>
+        <div class="hero-card" aria-label="サービスの安心ポイント">
+          <p class="pill">安心の3ポイント</p>
           <ul>
-            <li>ヒアリング & 競合分析</li>
-            <li>LP構成 / ライティング</li>
-            <li>デザイン・実装</li>
-            <li>1ヶ月の改善サポート</li>
+            <li>✓ 広告費を小さく試せる「小さなスタート」</li>
+            <li>✓ わからない専門用語は使いません</li>
+            <li>✓ 相談から運用まで一人の担当が伴走</li>
           </ul>
-          <a class="btn btn-primary" href="#contact">このプランで相談</a>
-        </div>
-        <div class="pricing-card">
-          <h3>プレミアムプラン</h3>
-          <p class="price">¥500,000〜</p>
-          <ul>
-            <li>経営課題の整理</li>
-            <li>顧客インタビュー設計</li>
-            <li>LP＋広告用クリエイティブ</li>
-            <li>3ヶ月の伴走改善</li>
-          </ul>
-          <a class="btn btn-primary" href="#contact">このプランで相談</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="section" id="faq">
-    <div class="container">
-      <span class="badge">FAQ</span>
-      <h2 class="section-title">よくあるご質問</h2>
-      <div class="faq">
-        <details>
-          <summary>制作期間はどのくらいですか？</summary>
-          <p>ヒアリングから納品まで平均4〜6週間程度です。内容により調整可能です。</p>
-        </details>
-        <details>
-          <summary>既存LPの改善だけでも依頼できますか？</summary>
-          <p>可能です。現状の課題整理から改善提案まで対応します。</p>
-        </details>
-        <details>
-          <summary>契約前に相談できますか？</summary>
-          <p>無料のオンライン相談をご用意しています。お気軽にお問い合わせください。</p>
-        </details>
+    <!-- Problem / Empathy -->
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Problem</span>
+          <h2 class="section-title">こんなお悩み、ありませんか</h2>
+          <p class="section-lead">ITが苦手でも安心できるよう、よくある不安を丁寧に整理しました。</p>
+        </div>
+        <div class="bento-grid">
+          <article class="card">
+            <h3>広告にお金をかけても成果が見えない</h3>
+            <p>費用対効果が分からず、不安だけが大きくなってしまう。</p>
+          </article>
+          <article class="card">
+            <h3>制作会社の説明が難しくて理解できない</h3>
+            <p>専門用語が多いと判断ができず、頼むのが怖い。</p>
+          </article>
+          <article class="card">
+            <h3>社内に詳しい人がいない</h3>
+            <p>相談できる相手がいないと、次に進めない。</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta-section" id="contact">
-    <div class="container">
-      <h2 class="section-title" style="color: var(--white);">まずは無料相談から</h2>
-      <p>経営者視点で課題を整理し、成果に直結する改善案をご提案します。</p>
-      <a class="btn btn-primary" href="mailto:info@example.com">無料相談を申し込む</a>
-    </div>
-  </section>
+    <!-- Affinity Story -->
+    <section class="section" id="story">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Story</span>
+          <h2 class="section-title">私たちも同じところで悩みました</h2>
+          <p class="section-lead">過去に「広告が怖い」「専門用語が分からない」体験をしてきたからこそ、
+            経営者さまの気持ちがよく分かります。</p>
+        </div>
+        <div class="bento-grid two-col">
+          <div class="card">
+            <p class="pill">体験談</p>
+            <h3>「何を信じればいいのか分からない」</h3>
+            <p>
+              私たち自身も、広告費だけが増えて成果が出ない時期がありました。
+              その経験から、無理をしない小さな検証を大切にしています。
+            </p>
+          </div>
+          <div class="image-card">
+            <img src="https://placehold.jp/800x450.png" alt="経営者が安心して相談しているイメージ" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- フッター -->
-  <footer>
-    <div class="container">
-      <p>© 2024 OneStop LP Studio. All Rights Reserved.</p>
-      <p><a href="#">プライバシーポリシー</a> | <a href="#">特定商取引法に基づく表記</a></p>
+    <!-- What is LP -->
+    <section class="section" id="what-is-lp">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">What is LP</span>
+          <h2 class="section-title">LPとは「1枚で伝える営業担当」</h2>
+          <p class="section-lead">難しく考えなくて大丈夫です。LPは、強みと安心を伝えるための一枚の説明書です。</p>
+        </div>
+        <div class="bento-grid two-col">
+          <div class="card">
+            <h3>LPでできること</h3>
+            <ul class="list">
+              <li>お客様が知りたい情報を順番に届ける</li>
+              <li>信頼できる理由を見える形で示す</li>
+              <li>問い合わせまでの流れをシンプルにする</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>だから難しい設定はいりません</h3>
+            <p>
+              私たちが構成を整え、文章も分かりやすく仕上げます。
+              経営者さまは「想い」と「強み」を教えていただくだけで大丈夫です。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Ads Fail -->
+    <section class="section" id="why-fail">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Why fail</span>
+          <h2 class="section-title">広告だけではうまくいかない理由</h2>
+          <p class="section-lead">広告は「人を集める」道具。LPが整っていないと成果は出ません。</p>
+        </div>
+        <div class="bento-grid">
+          <article class="card">
+            <h3>情報が多すぎて伝わらない</h3>
+            <p>見込み客は一度で理解できないと離れてしまいます。</p>
+          </article>
+          <article class="card">
+            <h3>安心材料が足りない</h3>
+            <p>実績・担当者・流れが見えないと決断ができません。</p>
+          </article>
+          <article class="card">
+            <h3>問い合わせ導線が複雑</h3>
+            <p>迷わない導線があるだけで、反応率は大きく変わります。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Small Test Strategy -->
+    <section class="section" id="small-start">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Small Start</span>
+          <h2 class="section-title">小さく試して、安心して広げる</h2>
+          <p class="section-lead">最初から大きな投資は不要です。小さなテストでリスクを抑えます。</p>
+        </div>
+        <div class="bento-grid two-col">
+          <div class="card">
+            <h3>広告費は少額から</h3>
+            <p>無理のない金額で反応を確認し、安心して改善を進めます。</p>
+          </div>
+          <div class="card">
+            <h3>数値は一緒に確認</h3>
+            <p>難しい指標は使わず、シンプルに成果を共有します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PDCA Explanation -->
+    <section class="section" id="pdca">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">PDCA</span>
+          <h2 class="section-title">改善の流れを分かりやすく</h2>
+          <p class="section-lead">やりっぱなしでは終わらせません。毎月、確認と改善を繰り返します。</p>
+        </div>
+        <div class="bento-grid">
+          <div class="card">
+            <h3>Plan</h3>
+            <p>目的とゴールを一緒に整理します。</p>
+          </div>
+          <div class="card">
+            <h3>Do</h3>
+            <p>LPを公開し、少額広告で反応を見ます。</p>
+          </div>
+          <div class="card">
+            <h3>Check</h3>
+            <p>シンプルな数値で成果を共有します。</p>
+          </div>
+          <div class="card">
+            <h3>Act</h3>
+            <p>改善案を提案し、次の一手を決めます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- One-stop System -->
+    <section class="section" id="onestop">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">One stop</span>
+          <h2 class="section-title">相談から運用までワンストップ</h2>
+          <p class="section-lead">担当が変わらず、最後まで伴走します。話が早く、安心です。</p>
+        </div>
+        <div class="bento-grid two-col">
+          <div class="card">
+            <h3>一人の担当が対応</h3>
+            <p>「話が伝わらない」「説明が二度手間」になりません。</p>
+          </div>
+          <div class="card">
+            <h3>LP・広告・改善をまとめて</h3>
+            <p>別々に依頼する必要がなく、費用も時間もムダにしません。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us / Trust -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">About</span>
+          <h2 class="section-title">私たちの約束</h2>
+          <p class="section-lead">信頼と心理的安全を大切にし、丁寧にお話を伺います。</p>
+        </div>
+        <div class="bento-grid">
+          <div class="card">
+            <h3>実績と経験</h3>
+            <p>中小企業の支援を中心に、120社以上のLP改善をサポート。</p>
+          </div>
+          <div class="card">
+            <h3>安心の説明</h3>
+            <p>専門用語は使わず、経営者さまの言葉でご説明します。</p>
+          </div>
+          <div class="card">
+            <h3>無理な営業はしません</h3>
+            <p>必要なことだけを提案し、納得いただいてから進めます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Flow -->
+    <section class="section" id="service">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Flow</span>
+          <h2 class="section-title">サービスの流れ</h2>
+          <p class="section-lead">初回のご相談から改善まで、分かりやすいステップで進めます。</p>
+        </div>
+        <div class="flow">
+          <div class="flow-step">
+            <div class="step-number">01</div>
+            <div>
+              <h3>無料相談</h3>
+              <p>現状と不安点をお聞かせください。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-number">02</div>
+            <div>
+              <h3>ご提案</h3>
+              <p>分かりやすいプランと費用をご提示します。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-number">03</div>
+            <div>
+              <h3>LP制作</h3>
+              <p>構成・文章・デザインを丁寧に作ります。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-number">04</div>
+            <div>
+              <h3>小さく広告開始</h3>
+              <p>少額からテストし、反応を確認します。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-number">05</div>
+            <div>
+              <h3>改善・伴走</h3>
+              <p>成果を見ながら改善を続けます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="price">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Price</span>
+          <h2 class="section-title">料金プラン</h2>
+          <p class="section-lead">安心して比較できるよう、シンプルに提示します。</p>
+        </div>
+        <div class="price-grid">
+          <div class="price-card">
+            <p class="pill">基本プラン</p>
+            <h3>スタートサポート</h3>
+            <p class="price">¥280,000〜</p>
+            <ul class="list">
+              <li>ヒアリングと強み整理</li>
+              <li>LP構成・ライティング</li>
+              <li>制作と公開サポート</li>
+              <li>初月の改善提案</li>
+            </ul>
+          </div>
+          <div class="price-card">
+            <p class="pill">伴走プラン</p>
+            <h3>成長サポート</h3>
+            <p class="price">¥480,000〜</p>
+            <ul class="list">
+              <li>市場・競合の簡易分析</li>
+              <li>広告クリエイティブの作成</li>
+              <li>3ヶ月の改善伴走</li>
+              <li>月次の報告と相談</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">FAQ</span>
+          <h2 class="section-title">よくあるご質問</h2>
+        </div>
+        <div class="bento-grid two-col">
+          <details>
+            <summary>ITが苦手でも大丈夫ですか？</summary>
+            <p>もちろん大丈夫です。専門用語は使わず、ゆっくりご説明します。</p>
+          </details>
+          <details>
+            <summary>広告費はいくらから始められますか？</summary>
+            <p>小さなテストから始められます。ご予算に合わせて調整します。</p>
+          </details>
+          <details>
+            <summary>打ち合わせはオンラインですか？</summary>
+            <p>基本はオンラインですが、ご希望に合わせて柔軟に対応します。</p>
+          </details>
+          <details>
+            <summary>契約前に相談できますか？</summary>
+            <p>無料相談で不安を解消してからご判断いただけます。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits / Future -->
+    <section class="section" id="benefit">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Benefit</span>
+          <h2 class="section-title">未来の安心を手に入れる</h2>
+          <p class="section-lead">LP集客が整うと、経営判断がもっとシンプルになります。</p>
+        </div>
+        <div class="bento-grid">
+          <div class="card">
+            <h3>問い合わせの質が上がる</h3>
+            <p>価格だけではなく、価値を理解したお客様が増えます。</p>
+          </div>
+          <div class="card">
+            <h3>広告費のムダを減らせる</h3>
+            <p>小さな改善を続けることで、費用対効果が高まります。</p>
+          </div>
+          <div class="card">
+            <h3>経営の判断が楽になる</h3>
+            <p>数字と現場の声が整理され、迷いが減ります。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing Message -->
+    <section class="section" id="closing">
+      <div class="container">
+        <div class="closing">
+          <h2 class="section-title" style="color: #ffffff;">不安を減らすことが、成果への近道です</h2>
+          <p>
+            ITが苦手でも、私たちは寄り添って進めます。
+            まずは小さな相談から、一緒に安心できる一歩を踏み出しましょう。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+      <div class="container">
+        <div class="cta-panel">
+          <h2 class="section-title" style="color: #ffffff;">無料相談で不安を解消しましょう</h2>
+          <p>初回は30分。無理な営業はしません。安心してお話しください。</p>
+          <a class="btn btn-primary" href="mailto:info@example.com" aria-label="無料相談を申し込む">無料相談を申し込む</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>© 2024 One Stop LP Support. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <div class="fixed-cta" role="presentation">
+      <a class="btn btn-primary" href="#cta">無料相談を予約する</a>
     </div>
-  </footer>
+  </div>
 </body>
 </html>
